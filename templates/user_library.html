@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <div class="library">
+    <h2>{{user}} 's library</h2>
+    {% for book in books %}
+      <div class="book">
+        <p><img src="{{book['ImageUrl']}}" alt='Брязкальце-барабан'></p>
+        <div class="description">
+          <div class="title"><a href="/book">{{ book['Name'] }}</a></div>
+          <div class="price">$ {{ book['BookId'] }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

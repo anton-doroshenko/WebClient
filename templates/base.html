@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='../static/style.css'/>
+    <title>YourBook</title>
+  </head>
+  <body>
+    <div class="header" role="navigation">
+      <div class="menu">
+        <div class="burger">
+          <input type="checkbox" id="menu-check">
+          <label for = "menu-check" class="menu-label">МЕНЮ</label>
+          <div class="burger-line first"></div>
+          <div class="burger-line second"></div>
+          <div class="burger-line third"></div>
+          <div class="menu-container">
+            {%for genre in genres%}
+              <form method='post'>
+                <button type='submit' value = "{{genre['GenreId']}}" name = "button" class="genre">{{genre['Name']}}</button>
+              </form>
+            {%endfor%}
+            <hr>
+            {%if not is_login%}
+            <input type="checkbox" id="register">
+            <label for = "register" class="genre">Реєстрація</label>
+            <div class="message-wrapper">
+              <div class="login-form">
+                <form method='post' class='autoform'>
+                  <div>РЕЄСТРАЦІЯ</div>
+                  <hr>
+                  <div class='regframe'>
+                    <label for="name">Імʼя *</label><br>
+                    <input id="name" type="name" name="name" value="Іван" class="text_box" placeholder="Іван" required>
+                    <label for="age">Дата народження</label><br>
+                    <input id="age" type="date" name="age" value="12/01/2018" class="text_box" placeholder="" pattern="[0-9]{1,}"><br>
+                    <label for="region">Місто</label><br>
+                    <!--<input id="region" type="name" name="region" class="text_box" value="Срака" placeholder="Минск"><br>-->
+                    <select id='region' name='region' class='text_box'>
+                      {% for region in regions %}
+                      <option value="{{region['RegionId']}}">{{region['Name']}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class='regframe'>
+                    <label for="surname">Прізвище *</label><br>
+                    <input id="surname" type="name" name="surname" value="Іванов" class="text_box" placeholder="Іванов" required><br>
+                    <label for="sex">Стать</label><br>
+                    <select id='sex' name='sex' class='text_box'>
+                      <option value='1'>чоловіча</option>
+                      <option value='2'>жіноча</option>
+                    </select>
+                    <!--<input id="sex" type="name" name="sex" class="text_box" placeholder=""><br>-->
+                    <label for="email">e-mail *</label><br>
+                    <input id="email" type="email" name="email" class="text_box" value="example@gmail.com" placeholder="example@gmail.com" required><br>
+                  </div>
+                  <!--<label for="lang">Language</label><br>
+                  <input id="lang" type="name" name="lang" class="text_box" placeholder=""><br>-->
+                  <label for="login_box">Логін *</label><br>
+                  <input id="login_box" type="name" name="login_box" value="kochka" class="text_box" placeholder="iIvan" required><br>
+                  <label for="password">Пароль *</label><br>
+                  <input id="password"  type="password" name="password" class="text_box" pattern="[0-9]{7,}" required placeholder="Введите пароль"><br>
+                  <label for="password">Повторіть пароль *</label><br>
+                  <input ud="password" type="password" class="text_box" placeholder="Повторите пароль" required pattern="[0-9]{7,}"><br>
+                  <button type='submit' value = "registration" name = "button" class="autorisation_button">Зареєструватися</button>
+                  <label for = "register" class="autorisation_button">Відміна</label>
+                </form>
+              </div>
+            </div>
+            <input type="checkbox" id="login">
+            <label for = "login" class="genre">Авторизація</label>
+            <div class="login-wrapper">
+              <div class="login-form">
+                <div>АВТОРИЗАЦІЯ</div>
+                <hr>
+                <form method='post' class='autoform'>
+                  <label for="name">Логін</label><br>
+                  <input id="name" type="name" name="username" class="text_box" placeholder="Иван" required><br>
+                  <label for="password">Пароль</label><br>
+                  <input id="password"  type="password" name="password" class="text_box" pattern="[0-9]{7,}" required placeholder="Введите пароль"><br>
+                  <button type='submit' value = "login" name = "button" class="autorisation_button">Авторизуватися</button>
+                  <label for = "login" class="autorisation_button">Відміна</label>
+                </form>
+              </div>
+            </div>
+            {% endif %}
+            {% if is_login %}
+            <form method='post'>
+              <button type='submit' value = "logout" name = "button" class="genre">Вийти</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if is_login %}
+      <a href="/library">
+        <div class='lib_ico'><img src='../static/images/library.png' height="50" width="50" align='right'></div>
+        <div class='self_cab'>Моя Бібліотека</div>
+      </a>
+      {% endif %}
+    </div>
+      {% block container %}{% endblock %}
+    </div>
+  </body>
+</html>

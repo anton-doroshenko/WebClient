@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  {% if is_login and not is_get_by_genre %}
+  <a href="/event?EventId={{event['EventId']}}">
+    <div class="library">
+      <h2>Події</h2>
+    </div>
+    <div class='events'>
+      <img src="{{event['LongPictureEvent']}}" alt='dsvwevwe' height="200" width="auto">
+      <!--<form><input name='event_id' value=""></form>-->
+    </div>
+  </a>
+  {% endif %}
+  <div class="library">
+    {% if is_login and not is_get_by_genre %}
+    <h2>Рекомендовані</h2>
+    {% endif %}
+    {% for product in products %}
+    <a href="/book?book_id={{product['BookId']}}">
+      <div class="book">
+        <p><img src="{{product['ImageUrl']}}" alt='Брязкальце-барабан'></p>
+        <div class='stars'>
+          <form class="rate">
+            <input type="radio" id="star10{{ product['BookId'] }}" name="rate" value="10" />
+            <label for="star10{{ product['BookId'] }}" title="text">10 stars</label>
+            <input type="radio" id="star9{{ product['BookId'] }}" name="rate" value="9" />
+            <label for="star9{{ product['BookId'] }}" title="text">9 stars</label>
+            <input type="radio" id="star8{{ product['BookId'] }}" name="rate" value="8" />
+            <label for="star8{{ product['BookId'] }}" title="text">8 stars</label>
+            <input type="radio" id="star7{{ product['BookId'] }}" name="rate" value="7" />
+            <label for="star7{{ product['BookId'] }}" title="text">7 stars</label>
+            <input type="radio" id="star6{{ product['BookId'] }}" name="rate" value="6" />
+            <label for="star6{{ product['BookId'] }}" title="text">6 stars</label>
+            <input type="radio" id="star5{{ product['BookId'] }}" name="rate" value="5" />
+            <label for="star5{{ product['BookId'] }}" title="text">5 stars</label>
+            <input type="radio" id="star4{{ product['BookId'] }}" name="rate" value="4" />
+            <label for="star4{{ product['BookId'] }}" title="text">4 stars</label>
+            <input type="radio" id="star3{{ product['BookId'] }}" name="rate" value="3" />
+            <label for="star3{{ product['BookId'] }}" title="text">3 stars</label>
+            <input type="radio" id="star2{{ product['BookId'] }}" name="rate" value="2" />
+            <label for="star2{{ product['BookId'] }}" title="text">2 stars</label>
+            <input type="radio" id="star1{{ product['BookId'] }}" name="rate" value="1" />
+            <label for="star1{{ product['BookId'] }}" title="text">1 star</label>
+          </form>
+        </div>
+        <div class="description">
+          <div class="title"><a href="/book">{{ product['Name'] }}</a></div>
+          <div class="price">$ {{ product['BookId'] }}</div>
+        </div>
+        {% if is_login %}
+        <form method='post'>
+          <input type="hidden" value = "{{product['BookId']}}" name = "book_id">
+          {% if product['IsInLib'] != 1 %}
+          <button type='submit' value = "addbook" name = "button" class="add_del_but">Add to library</button>
+          {% else %}
+          <button type='submit' value = "deletebook" name = "button" class="add_del_but">Delete from library</button>
+          {% endif %}
+        </form>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+    {% if is_login and not is_get_by_genre %}
+    <h2>Новинки</h2>
+    {% for book in new_books %}
+    <a href="/book?book_id={{book['BookId']}}">
+      <div class="book">
+        <p><img src="{{book['ImageUrl']}}" alt='Брязкальце-барабан'></p>
+        <div class='stars' id='{{book['BookId']}}'>
+          <form class="rate">
+            <input type="radio" id="star10{{ book['BookId'] }}" name="rate" value="10" {% if book['Rate'] == 10 %}checked{%endif%}/>
+            <label for="star10{{ book['BookId'] }}" title="text">10 stars</label>
+            <input type="radio" id="star9{{ book['BookId'] }}" name="rate" value="9" {% if book['Rate'] == 9 %}checked{%endif%}/>
+            <label for="star9{{ book['BookId'] }}" title="text">9 stars</label>
+            <input type="radio" id="star8{{ book['BookId'] }}" name="rate" value="8" {% if book['Rate'] == 8 %}checked{%endif%}/>
+            <label for="star8{{ book['BookId'] }}" title="text">8 stars</label>
+            <input type="radio" id="star7{{ book['BookId'] }}" name="rate" value="7" {% if book['Rate'] == 7 %}checked{%endif%}/>
+            <label for="star7{{ book['BookId'] }}" title="text">7 stars</label>
+            <input type="radio" id="star6{{ book['BookId'] }}" name="rate" value="6" {% if book['Rate'] == 6 %}checked{%endif%}/>
+            <label for="star6{{ book['BookId'] }}" title="text">6 stars</label>
+            <input type="radio" id="star5{{ book['BookId'] }}" name="rate" value="5" {% if book['Rate'] == 5 %}checked{%endif%}/>
+            <label for="star5{{ book['BookId'] }}" title="text">5 stars</label>
+            <input type="radio" id="star4{{ book['BookId'] }}" name="rate" value="4" {% if book['Rate'] == 4 %}checked{%endif%}/>
+            <label for="star4{{ book['BookId'] }}" title="text">4 stars</label>
+            <input type="radio" id="star3{{ book['BookId'] }}" name="rate" value="3" {% if book['Rate'] == 3 %}checked{%endif%}/>
+            <label for="star3{{ book['BookId'] }}" title="text">3 stars</label>
+            <input type="radio" id="star2{{ book['BookId'] }}" name="rate" value="2" {% if book['Rate'] == 2 %}checked{%endif%}/>
+            <label for="star2{{ book['BookId'] }}" title="text">2 stars</label>
+            <input type="radio" id="star1{{ book['BookId'] }}" name="rate" value="1" {% if book['Rate'] == 1 %}checked{%endif%}/>
+            <label for="star1{{ book['BookId'] }}" title="text">1 star</label>
+          </form>
+        </div>
+        <div class="description">
+          <div class="title"><a href="/book">{{ book['Name'] }}</a></div>
+          <div class="price">$ {{ book['BookId'] }}</div>
+        </div>
+        <form method='post'>
+          <input type="hidden" value = "{{book['BookId']}}" name = "book_id">
+          {% if book['IsInLib'] != 1 %}
+          <button type='submit' value = "addbook" name = "button" class="add_del_but">Add to library</button>
+          {% else %}
+          <button type='submit' value = "deletebook" name = "button" class="add_del_but">Delete from library</button>
+          {% endif %}
+        </form>
+      </div>
+    </a>
+    {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}

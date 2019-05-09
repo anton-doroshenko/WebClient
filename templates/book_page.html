@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <div class="library">
+    <div class="rightMain">
+      <img src="{{book['ImageUrl']}}" alt='Брязкальце-барабан'>
+      <!--<img src='https://www.tempora.com.ua/media/photos/books/Screen_Shot_2018-07-26_at_14.28.40.png.300x450_q85_crop.png' alt='Брязкальце-барабан'>-->
+      {% if is_login %}
+      <div class="stars">
+        <div class="rate">
+          <input type="radio" id="star10" name="rate" value="10" {% if book['Rate'] == 10 %}checked{%endif%}/>
+          <label for="star10" title="text">10 stars</label>
+          <input type="radio" id="star9" name="rate" value="9" {% if book['Rate'] == 9 %}checked{%endif%}/>
+          <label for="star9" title="text">9 stars</label>
+          <input type="radio" id="star8" name="rate" value="8" {% if book['Rate'] == 8 %}checked{%endif%}/>
+          <label for="star8" title="text">8 stars</label>
+          <input type="radio" id="star7" name="rate" value="7" {% if book['Rate'] == 7 %}checked{%endif%}/>
+          <label for="star7" title="text">7 stars</label>
+          <input type="radio" id="star6" name="rate" value="6" {% if book['Rate'] == 6 %}checked{%endif%}/>
+          <label for="star6" title="text">6 stars</label>
+          <input type="radio" id="star5" name="rate" value="5" {% if book['Rate'] == 5 %}checked{%endif%}/>
+          <label for="star5" title="text">5 stars</label>
+          <input type="radio" id="star4" name="rate" value="4" {% if book['Rate'] == 4 %}checked{%endif%}/>
+          <label for="star4" title="text">4 stars</label>
+          <input type="radio" id="star3" name="rate" value="3" {% if book['Rate'] == 3 %}checked{%endif%}/>
+          <label for="star3" title="text">3 stars</label>
+          <input type="radio" id="star2" name="rate" value="2" {% if book['Rate'] == 2 %}checked{%endif%}/>
+          <label for="star2" title="text">2 stars</label>
+          <input type="radio" id="star1" name="rate" value="1" {% if book['Rate'] == 1 %}checked{%endif%}/>
+          <label for="star1" title="text">1 star</label>
+        </div>
+      </div>
+      {% endif %}
+      <div class="description">
+        <b><div class="title"><a href="{{ "/home" }}">{{ book['Name'] }}</a></div></b>
+        <div class="price">$ {{ book['BookId'] }}</div>
+          {{book['DescriptionBook']}}
+      </div>
+    </div>
+    <h1>Відгуки</h1>
+    <div class='comments'>
+      {% for comment in comments %}
+      <div class='comment'>
+        <div class='avatar'>
+          <!--<img src="{{comment['avatar']}}"></img>-->
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIgycbgAB8-MjaOmORWGZgvHlh-nb0yUteILyub1nu8LJsNQ1_Sw"></img>
+        </div>
+        <div class='comment_content'>
+          <div class='comment_author'>
+            {{ comment['Login'] }}
+          </div>
+          <div class='comment_text'>{{comment['Comment']}}</div>
+        </div>
+      </div>
+      {% endfor %}
+      {% if is_login %}
+      <form method="post">
+        <textarea name="comment_text" rows="8" cols="80"></textarea><br>
+        <button type="submit" value='send' name="button">Відправити</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

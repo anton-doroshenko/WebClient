@@ -1,0 +1,413 @@
+body{
+  margin: 0;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.message-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    max-width: 0;
+    max-height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+.message {
+    background-color: #dddaf1;
+    width: 400px;
+    height: auto;
+}
+
+#register{
+  display: none;
+}
+
+#register:checked ~ .message-wrapper{
+  max-height: 100%;
+  max-width: 100%;
+  font-size: medium;
+}
+
+.login-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    max-width: 0;
+    max-height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+.login-form {
+    background-color: rgba(15, 34, 42, 0.9);
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border: solid rgb(22, 23, 24);
+    border-radius: 20px;
+}
+
+.autorisation_button{
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  vertical-align: middle;
+  line-height: 1.5;
+  font-family: inherit;
+  padding: 0;
+  border: solid 3px rgb(80, 95, 94);
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.autorisation_button:hover{
+  background-color: rgb(80, 95, 94);
+}
+
+.autoform{
+  align-items: center;
+}
+
+.text_box{
+  width: 100%;
+  padding: 0;
+  border: none;
+  height: 30px;
+  box-shadow: 0 -5px inset #3ea19d;
+  margin-bottom: 10px;
+}
+
+#login{
+  display: none;
+}
+
+#login:checked ~ .login-wrapper{
+  max-height: 100%;
+  max-width: 100%;
+  font-size: medium;
+}
+
+.header{
+  background-color: #2c3e50;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  color: white;
+}
+
+#menu-check{
+  display: none;
+}
+
+.burger{
+  display: inline-block;
+  height: 50px;
+  width: 150px;
+}
+
+.menu-label{
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.burger-line{
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  background-color: #FFF;
+  top:15px;
+  left: 3px;
+}
+
+.second{
+  top: 25px;
+}
+
+.third{
+  top: 35px;
+}
+
+.menu-container{
+  display: inline-block;
+  width: 300px;
+  height: auto;
+  background-color: rgba(0, 27, 39, 0.95);
+  max-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  transition: .5s all;
+  border-radius: 0 0 15px;
+}
+
+#menu-check:checked ~ .menu-container{
+  max-height: 600px;
+  font-size: medium;
+}
+
+.menu{
+  display: inline-block;
+  width: 80%;
+}
+
+.self_cab{
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-left: 70px;
+}
+
+.lib_ico{
+  display: inline-block;
+  position: absolute;
+  height: inherit;
+  width: 70px;
+}
+
+dialog{
+border-radius: 20px;
+background: yellow;
+}
+
+.library{
+  background-color: #FFF;
+  display:block;
+  margin-left: 8%;
+  padding-top: 60px;
+}
+
+.genre{
+  display: block;
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  padding: 5px;
+}
+
+.genre:hover{
+  color: gray;
+  font-size: 22px;
+}
+
+.book {
+    display: inline-block;
+    width: 28%;
+    height: auto;
+    text-align: center;
+    box-shadow: 1px 1px 2px;
+}
+.description {
+    height: 40%;
+}
+.title{
+  height: 55%;
+}
+.price{
+  height: 45%;
+}
+.book img{
+	width:auto;
+  height: 350px;
+	border-radius:15%;
+	-webkit-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    transition-duration: 1s;
+}
+
+.comments{
+  width:100%;
+  padding-bottom: 30px;
+}
+
+.comment{
+  display: flex;
+}
+
+.avatar{
+  height: 100%;
+  width: auto;
+  display: inline-block;
+  text-align: center;
+  padding: 20px;
+}
+
+.comment_content{
+  width: 60%;
+  display: inline-block;
+}
+
+.comment_author{
+  width:100%;
+  font-family: inherit;
+  font-size: 23px;
+  padding-bottom: 20px;
+}
+
+.comment_text{
+  width:100%;
+}
+
+.avatar img{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  align-self: center;
+}
+
+.add_del_but{
+  display: block;
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  color: black;
+  font-size: 20px;
+  text-align: left;
+  padding: 5px;
+}
+
+.add_del_but:hover{
+  color: gray;
+}
+
+.regframe{
+  display: inline-block;
+  width: 49%;
+}
+
+.events{
+  height: 200px;
+  width:100%;
+  text-align: center;
+}
+
+.event_content{
+  display: flex;
+}
+
+.rightMain{
+display:inline-block;
+width: 70%;
+}
+.leftMain{
+display:inline-block;
+width: 20%;
+}
+
+.rightMain img{
+  text-align: center;
+  height: 500px;
+  width: auto;
+}
+
+.question_form{
+  padding-right: 20%;
+  font-size: 22px;
+  font-family: inherit;
+}
+
+.space{
+  margin-right: 20px;
+}
+
+.que_button{
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  vertical-align: middle;
+  line-height: 1.5;
+  font-family: inherit;
+  padding: 0;
+  border: solid 3px rgb(80, 95, 94);
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.que_button:hover{
+  background-color: rgb(80, 95, 94);
+}
+
+a{
+  text-decoration: inherit;
+  color: inherit;width: auto;
+}
+
+p{
+  height: 350px;
+}
+
+.stars{
+  width: 100%;
+  height: 46px;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
